@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Nooted{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>Notes</h1>
+<form id="form-note" method="POST">
+<div class="input-container">
+  <input name="title" type="text" id="title" placeholder="Add new task...">
+  <button type="submit" class="button">Add Note</button>
+</form>
+</div>
+<ul id="notes">
+  {% for note in user.notes %}
+  {% if not note %}
+  <p>You don't have any notes</p>
+  {% else %}
+  <li>
+    {{ note.title }}
+    <br />
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="false">&times;</span>
+    </button>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endblock %}
