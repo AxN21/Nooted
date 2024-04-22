@@ -117,8 +117,13 @@ li span {
 }
 
 @media screen and (max-width: 600px) {
-  .form, .form-container, .body {
+
+  .form-container {
+    min-width: 350px;
+    padding: 0;
+  }
+
+  .form {
     width: 100%;
-    margin-top: 0;
   }
 }

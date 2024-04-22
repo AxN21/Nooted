@@ -5,14 +5,20 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
 
-''' Define the blueprint for auth '''
+# Define the blueprint for auth
 auth = Blueprint('auth', __name__)
 
 
-
-
+# Define the routes for authentication
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    '''
+    Handle user login.
+
+    Returns:
+        Redirects the user to the home page on successful login
+    '''
+
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -30,15 +36,30 @@ def login():
                 flash('Incorrect password, try again.', category='error')
     return render_template('login.html', user=current_user)
 
+
 @auth.route('/logout')
 @login_required
 def logout():
+    '''
+    Handle user logout
+
+    Returns:
+        Redirects to the login page after a successful logout
+    '''
+
     logout_user()
     return redirect(url_for('auth.login'))
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    '''
+    Handle user registration
+
+    Returns:
+        Redirects the user to the home page on successful registration
+    '''
+
     if request.method == 'POST':
         username = request.form.get('username')
         password1 = request.form.get('password1')
