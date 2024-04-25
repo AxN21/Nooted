@@ -2,11 +2,11 @@ from flask import Flask
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+from os import path
 
 # Initialize database instance
 db = SQLAlchemy()
-"""DB_NAME = 'database.db'"""
+DB_NAME = 'database.db'
 
 
 def create_app():
@@ -19,8 +19,8 @@ def create_app():
     '''
 
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['SECRET_KEY'] = 'ahaoivhjao;vjoemPVJO' #os.getenv('SECRET_KEY')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' #os.getenv('DATABASE_URL')
     db.init_app(app)
 
     # Import and register blueprints
@@ -32,7 +32,7 @@ def create_app():
 
     from .models import User
 
-    # create_database(app)
+    create_database(app)
 
     # Initialize Flask-login extension
     login_manager = LoginManager()
@@ -49,8 +49,8 @@ def create_app():
 
 # Uncomment when in dev mode with SQLAlchemy
 ''' Create the database on init if it doesn't exit already '''
-'''def create_database(app):
+def create_database(app):
     if not path.exists('app/instance/' + DB_NAME):
         with app.app_context():
             db.create_all()
-            print('Created Database!')'''
+            print('Created Database!')
