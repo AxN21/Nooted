@@ -16,7 +16,7 @@ def login():
     Handle user login.
 
     Returns:
-        Redirects the user to the home page on successful login
+        Redirects the user to the home page on successfullerlogin
     '''
 
     if request.method == 'POST':
@@ -40,6 +40,7 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+    
     '''
     Handle user logout
 
