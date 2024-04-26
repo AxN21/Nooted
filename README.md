@@ -3,10 +3,10 @@
 
 Nooted is a simple web application that allows users to write notes and keep track of them, with an interface designed for simplicity.
 
-# Deplyed Website
+# Deployed Website
 -   https://nooted.onrender.com
     
-If you follow the link and access the deployed page, keep in mind that it might take some time for the website to load for the first time.
+If you follow the link, keep in mind that it might take some time for the website to load for the first time.
 
 ## System Requirements
 The below requirements need to be installed on the system to run the project.
